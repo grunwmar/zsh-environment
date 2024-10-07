@@ -1,11 +1,35 @@
 #!/usr/bin/zsh
 
+function get_git_branch () {
+   git branch --show-current 2>/dev/null
+}
+
+function get_ip_address() {
+    ifconfig |grep 'inet 192'|cut -d' ' -f10
+}
+
+
+
 function precmd () {
-  export  PROMPT="[%n:%F{10}%3d%f]%% "
-  export RPROMPT="[%F{10}%m%f|%F{10}%T%f]"
+
+  GIT=$(get_git_branch)
+  if ! [[ -z $GIT ]]; then
+    GIT="%F{11}<$GIT>%f"
+  fi
+
+  VENV=$(basename "$VIRTUAL_ENV")
+  if ! [[ -z $VENV ]]; then
+    VENV="%F{13}$VENV%f|"
+  fi
+
+  IPADDR=$(get_ip_address)
+
+  export PROMPT="[$VENV%n:%F{10}%3d%f$GIT]%% "
+  export RPROMPT="[%F{10}$IPADDR%f/%F{10}%m%f|%F{10}%T%f]"
 
   if [[ $COLUMNS -lt 101 ]]; then
-    export PROMPT="[%n:%F{10}%c%f]%% "
+    export PROMPT="[$VENV%n:%F{10}%c%f$GIT]%% "
+    export RPROMPT="[%F{10}%m%f|%F{10}%T%f]"
   fi
 
   if [[ $COLUMNS -lt 71 ]]; then
