@@ -8,7 +8,7 @@ alias tx="tmux"
 
 # Update environment from git
 function update-ze () {
-  echo -n "Do you want to download zsh-environment from git?[y/N] "
+  echo -n "Do you want to download zsh-environment from git? [y/N] "
   read ANSW
   if [[ $ANSW = "y" ]]; then
     PWDBK="$PWD"
