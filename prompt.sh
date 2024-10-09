@@ -30,6 +30,6 @@ function precmd () {
 
   NEWLINE=$'\n'
 
-  export PROMPT=$NEWLINE$PROMPT
+  export PROMPT="$NEWLINE↳$PROMPT"
 }
 
