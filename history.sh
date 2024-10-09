@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-export HISTFILE="$ZDOT/zsh_history.log"
+export HISTFILE="$ZUSERDIR/zsh_history.log"
 
 export HISTSIZE=5000000
 export SAVEHIST=$HISTSIZE
