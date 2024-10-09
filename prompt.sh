@@ -4,11 +4,6 @@ function get_git_branch () {
    git branch --show-current 2>/dev/null
 }
 
-function get_ip_address() {
-    ifconfig |grep 'inet 192'|cut -d' ' -f10
-}
-
-
 function precmd () {
 
   GIT=$(get_git_branch)
