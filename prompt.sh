@@ -16,11 +16,11 @@ function precmd () {
     VENV="%F{13}$VENV%f|"
   fi
 
-  export PROMPT="[$VENV%n:%F{10}%3~%f$GIT]%% "
+  export PROMPT="[$VENV%F{14}%n%f:%F{10}%3~%f$GIT]%% "
   export RPROMPT="[%F{10}%m%f|%F{10}%T%f]"
 
   if [[ $COLUMNS -lt 101 ]]; then
-    export PROMPT="[$VENV%n:%F{10}%c%f$GIT]%% "
+    export PROMPT="[$VENV%F{14}%n%f:%F{10}%c%f$GIT]%% "
     export RPROMPT="[%F{10}%m%f|%F{10}%T%f]"
   fi
 

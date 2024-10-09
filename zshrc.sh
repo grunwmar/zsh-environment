@@ -10,6 +10,8 @@ else
     export ZUSERDIR="$HOME/.zsh_user"
 fi
 
+export DOTFILES="$ZDOT/dotfiles"
+
 if ! [[ -d "$ZDOT/commands" ]]; then
     export PATH="$PATH:$ZDOT/commands"
 fi
