@@ -38,3 +38,7 @@ fi
 if [[ -f "$ZUSERDIR/logo.sh" ]]; then
     source "$ZUSERDIR/logo.sh"
 fi
+
+if [[ -f "$ZUSERDIR/plugins/plugins.sh" ]]; then
+    source "$ZUSERDIR/plugins/plugins.sh"
+fi
