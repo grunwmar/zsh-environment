@@ -2,3 +2,11 @@
 alias ls="ls --color=yes"
 alias l="ls -lh"
 alias ll="ls -lAh"
+
+# Update environment from git
+function zeup () {
+  PWDBK="$PWD"
+  cd $HOME/.zsh-environment
+  git pull -f
+  cd "$PWDBK"
+}
