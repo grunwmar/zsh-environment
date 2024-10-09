@@ -4,7 +4,7 @@ alias l="ls -lh"
 alias ll="ls -lAh"
 
 alias nn="nano -T3"
-alias tx="termux"
+alias tx="tmux"
 
 # Update environment from git
 function zeup () {
