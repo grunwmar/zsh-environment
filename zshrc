@@ -27,6 +27,10 @@ source "$ZDOT/history.sh"
 source "$ZDOT/prompt.sh"
 source "$ZDOT/aliases.sh"
 
+if [[ -f "$ZUSERDIR/zshrc.sh" ]]; then
+    source "$ZUSERDIR/zshrc.sh"
+fi
+
 # Sources user's script containing some custom informations
 # to show when terminal is open, e.g. ASCII art picture etc.
 if [[ -f "$ZUSERDIR/logo.sh" ]]; then
