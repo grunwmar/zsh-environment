@@ -23,9 +23,12 @@ function precmd () {
   fi
 
   IPADDR=$(get_ip_address)
+  if ! [[ -z $IPADDR ]]; then
+    IPADDR="%F{10}$IPADDR%f/"
+  fi
 
-  export PROMPT="[$VENV%n:%F{10}%3d%f$GIT]%% "
-  export RPROMPT="[%F{10}$IPADDR%f/%F{10}%m%f|%F{10}%T%f]"
+  export PROMPT="[$VENV%n:%F{10}%3~%f$GIT]%% "
+  export RPROMPT="[$IPADDR%F{10}%m%f|%F{10}%T%f]"
 
   if [[ $COLUMNS -lt 101 ]]; then
     export PROMPT="[$VENV%n:%F{10}%c%f$GIT]%% "
