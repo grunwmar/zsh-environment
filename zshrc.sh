@@ -6,7 +6,7 @@ if [[ $1 = -d ]]; then
     export ZUSERDIR="./zsh_user"
     echo "[Development mode]"
 else
-    export ZDOT="$HOME/.zshrc.d"
+    export ZDOT="$HOME/.local/zshrc.d"
     export ZUSERDIR="$HOME/.zsh_user"
 fi
 

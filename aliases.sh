@@ -9,7 +9,7 @@ alias tx="tmux"
 # Update environment from git
 function zeup () {
   PWDBK="$PWD"
-  cd $HOME/.zsh-environment
+  cd $HOME/.local/zshrc.d
   git pull -f
   cd "$PWDBK"
 }

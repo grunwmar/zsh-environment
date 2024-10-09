@@ -9,7 +9,6 @@ function get_ip_address() {
 }
 
 
-
 function precmd () {
 
   GIT=$(get_git_branch)
@@ -22,13 +21,8 @@ function precmd () {
     VENV="%F{13}$VENV%f|"
   fi
 
-  IPADDR=$(get_ip_address)
-  if ! [[ -z $IPADDR ]]; then
-    IPADDR="%F{10}$IPADDR%f/"
-  fi
-
   export PROMPT="[$VENV%n:%F{10}%3~%f$GIT]%% "
-  export RPROMPT="[$IPADDR%F{10}%m%f|%F{10}%T%f]"
+  export RPROMPT="[%F{10}%m%f|%F{10}%T%f]"
 
   if [[ $COLUMNS -lt 101 ]]; then
     export PROMPT="[$VENV%n:%F{10}%c%f$GIT]%% "
