@@ -5,7 +5,7 @@ export HISTFILE="$ZUSERDIR/zsh_history.log"
 export HISTSIZE=5000000
 export SAVEHIST=$HISTSIZE
 export HISTDUP=erase
-HISTTIMEFORMAT="%m-%s-%Y %H:%M> "
+export HISTTIMEFORMAT="%m-%s-%Y %H:%M> "
 
 setopt EXTENDED_HISTORY
 setopt inc_append_history
