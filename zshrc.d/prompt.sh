@@ -38,5 +38,9 @@ function precmd () {
   if [[ $COLUMNS -lt 71 ]]; then
     export RPROMPT="[%F{10}%T%f]"
   fi
+
+  NEWLINE=$'\n'
+
+  export PROMPT=$NEWLINE$PROMPT
 }
 
