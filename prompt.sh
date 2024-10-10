@@ -5,31 +5,42 @@ function get_git_branch () {
 }
 
 function precmd () {
+  NEWLINE=$'\n'
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{11}<$GIT>%f"
+    GIT="%F{11} $GIT%f"
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{13}$VENV%f|"
+    VENV="%F{5}:$VENV%f "
   fi
 
-  export PROMPT="$VENV%F{14}%n%f %F{10}%3~%f$GIT%% "
-  export RPROMPT="%F{14}%m%f %F{10}%T%f"
+  TOPROW="$VENV"
 
-  if [[ $COLUMNS -lt 101 ]]; then
-    export PROMPT="$VENV%F{14}%n%f %F{10}%c%f$GIT%% "
-    export RPROMPT="%F{14}%m%f %F{10}%T%f"
+  PROMPT="$TOPROW$NEWLINE%F{10}%3~%f%b$GIT %B%%%b "
+  RPROMPT="%F{14}%n%f%F{6}@%m%f %F{10}%T%f"
+
+  if [[ $COLUMNS -lt 127 ]]; then
+    RPROMPT="%F{14}%n%f %F{10}%T%f"
   fi
 
-  if [[ $COLUMNS -lt 71 ]]; then
-    export RPROMPT="%F{10}%T%f"
+  if [[ $COLUMNS -lt 111 ]]; then
+    PROMPT="$TOPROW$NEWLINE%F{10}%2~%f%b$GIT %B%%%b "
   fi
 
-  NEWLINE=$'\n'
+  if [[ $COLUMNS -lt 100 ]]; then
+    PROMPT="$TOPROW$NEWLINE%F{10}%c%f%b$GIT %B%%%b "
+  fi
 
-  export PROMPT="$NEWLINE↳$PROMPT"
+  if [[ $COLUMNS -lt 70 ]]; then
+    TOPROW="%F{14}%n%f "$TOPROW
+    PROMPT="$TOPROW$NEWLINE%F{10}%c%f%b$GIT %B%%%b "
+    RPROMPT="%F{10}%T%f"
+  fi
+
+  export PROMPT="$NEWLINE$PROMPT"
+  export RPROMPT="$RPROMPT"
 }
 
