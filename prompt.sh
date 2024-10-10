@@ -20,10 +20,10 @@ function precmd () {
   TOPROW="$VENV"
 
   PROMPT="$TOPROW$NEWLINE%F{10}%3~%f%b$GIT %B%%%b "
-  RPROMPT="%F{14}%n%f%F{6}@%m%f %F{10}%T%f"
+  RPROMPT="%F{14}%n%f%F{6}@%m%f %F{2}%T%f"
 
   if [[ $COLUMNS -lt 127 ]]; then
-    RPROMPT="%F{14}%n%f %F{10}%T%f"
+    RPROMPT="%F{14}%n%f %F{2}%T%f"
   fi
 
   if [[ $COLUMNS -lt 111 ]]; then
@@ -37,7 +37,7 @@ function precmd () {
   if [[ $COLUMNS -lt 70 ]]; then
     TOPROW="%F{14}%n%f "$TOPROW
     PROMPT="$TOPROW$NEWLINE%F{10}%c%f%b$GIT %B%%%b "
-    RPROMPT="%F{10}%T%f"
+    RPROMPT="%F{2}%T%f"
   fi
 
   export PROMPT="$NEWLINE$PROMPT"
