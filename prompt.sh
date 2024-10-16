@@ -10,16 +10,16 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{11}:$GIT%f"
+    GIT="%F{13}:$GIT%f"
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
     VENV="%F{13}$VENV%f"
   fi
-
+  PSIGN="%(!.#.$)"
   TIME="[%F{14}%T%f]"
-  USER_NAME="%B%F{2}%n%f%b"
+  USER_NAME="%(!.%F{11}%B%S%f%F{13} %n %f%F{11}%s%b%f.%B%F{2}%n%f%b)"
   MACHINE_NAME="%F{2}%m%f"
   CWD="%3~"
 
@@ -81,7 +81,7 @@ function precmd () {
     RPROMPT+="$TIME"
   fi
 
-  export PROMPT="$PROMPT%B%%%b "
+  export PROMPT="$PROMPT$PSIGN "
   export RPROMPT="$RPROMPT"
 }
 
