@@ -33,9 +33,7 @@ if [[ -d "$ZUSERDIR/commands" ]]; then
 fi
 
 function read_var() {
-
     ZUSETVAR="$ZUSERDIR/var"
-
     if [[ -f "$ZUSETVAR/$1" ]]; then
       cat "$ZUSETVAR/$1"
     else
@@ -46,7 +44,6 @@ function read_var() {
 function set_var() {
     echo "$2" > "$1"
 }
-
 
 # hístory settings
 export HISTFILE="$ZUSERDIR/history.log"

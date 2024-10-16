@@ -4,7 +4,6 @@ alias l="ls -lh"
 alias ll="ls -lAh"
 alias la="ls -A"
 alias nn="nano -T3"
-alias tx="tmux"
 
 function cl () {
   cd $1

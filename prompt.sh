@@ -18,24 +18,23 @@ function precmd () {
     VENV="%F{13}$VENV%f"
   fi
 
-  TIME="[%T]"
+  TIME="[%F{14}%T%f]"
   USER_NAME="%B%F{2}%n%f%b"
   MACHINE_NAME="%F{2}%m%f"
   CWD="%3~"
 
-    if [[ $COLUMNS -lt 91 ]]; then
-      CWD="%1~"
-    fi
-  CWD="$CWD"
+  if [[ $COLUMNS -lt 91 ]]; then
+    CWD="%1~"
+  fi
 
-    OPT_USER_NAME=$(read_var "prompt/username" "on")
-    OPT_MACHINE_NAME=$(read_var "prompt/hostname" "on")
-    OPT_TIME=$(read_var "prompt/time" "on")
-    OPT_VENV=$(read_var "prompt/venv" "on")
-    OPT_CWD=$(read_var "prompt/cwd" "on")
-    OPT_GIT=$(read_var "prompt/git" "on")
-    OPT_NEWLINE=$(read_var "prompt/newline" "on")
-
+  CWD="%F{14}$CWD%f"
+  OPT_USER_NAME=$(read_var "prompt/username" "on")
+  OPT_MACHINE_NAME=$(read_var "prompt/hostname" "on")
+  OPT_TIME=$(read_var "prompt/time" "on")
+  OPT_VENV=$(read_var "prompt/venv" "on")
+  OPT_CWD=$(read_var "prompt/cwd" "on")
+  OPT_GIT=$(read_var "prompt/git" "on")
+  OPT_NEWLINE=$(read_var "prompt/newline" "on")
   PROMPT=""
   RPROMPT=""
   SEP1=""
@@ -87,13 +86,9 @@ function precmd () {
 }
 
 function ze:prompt() {
-
   ZUSETVAR="$ZUSERDIR/var/prompt"
-
   if ! [[ -d "$ZUSETVAR" ]]; then
       mkdir -p "$ZUSETVAR"
   fi
-
   set_var "$ZUSETVAR/$1" "$2"
-
 }
