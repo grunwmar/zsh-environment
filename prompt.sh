@@ -38,15 +38,17 @@ function precmd () {
   OPT_CWD=$(read_var "prompt/cwd" "on")
   OPT_GIT=$(read_var "prompt/git" "on")
   OPT_NEWLINE=$(read_var "prompt/newline" "on")
-  PROMPT="$STATSIGN"
+  PROMPT=""
   RPROMPT=""
   SEP1=""
   SEP2=""
   SEP3=""
 
   if [[ $OPT_NEWLINE = on ]]; then
-    PROMPT="$NEWLINE"
+    PROMPT+="$NEWLINE"
   fi
+
+  PROMPT+="$STATSIGN"
 
   if { [[ $OPT_USER_NAME = on ]] || [[ $OPT_MACHINE_NAME = on ]] } && [[ $OPT_CWD = on ]]; then
     SEP1=":"
