@@ -17,14 +17,17 @@ function precmd () {
   if ! [[ -z $VENV ]]; then
     VENV="%F{13}$VENV%f"
   fi
-  PSIGN="%(!.#.$)"
-  TIME="[%F{14}%T%f]"
-  USER_NAME="%(!.%F{11}%B%S%f%F{13} %n %f%F{11}%s%b%f.%B%F{2}%n%f%b)"
-  MACHINE_NAME="%F{2}%m%f"
+  PSIGN="%B%(!.#.%%)%b"
+  STATSIGN="%B%(?.%F{2}→%f.%F{1}→%f)%b"
+  TIME=" %F{12}%T%f"
+  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%B%F{4}%n%f%b)"
+  MACHINE_NAME="%F{4}%m%f"
   CWD="%3~"
 
-  if [[ $COLUMNS -lt 91 ]]; then
+  if [[ $COLUMNS -lt 81 ]]; then
     CWD="%1~"
+    else
+    STATSIGN="$STATSIGN "
   fi
 
   CWD="%F{14}$CWD%f"
@@ -35,7 +38,7 @@ function precmd () {
   OPT_CWD=$(read_var "prompt/cwd" "on")
   OPT_GIT=$(read_var "prompt/git" "on")
   OPT_NEWLINE=$(read_var "prompt/newline" "on")
-  PROMPT=""
+  PROMPT="$STATSIGN"
   RPROMPT=""
   SEP1=""
   SEP2=""
@@ -50,7 +53,7 @@ function precmd () {
   fi
 
   if [[ $OPT_USER_NAME = on ]] && [[ $OPT_MACHINE_NAME = on ]]; then
-    SEP2="%F{2}@%f"
+    SEP2="%F{4}@%f"
   fi
 
   if [[ $OPT_TIME = on ]] || [[ $OPT_MACHINE_NAME = on ]]; then
