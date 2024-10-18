@@ -19,7 +19,7 @@ function precmd () {
   fi
   PSIGN="%B%(!.#.%%)%b"
   STATSIGN="%B%(?.%F{2}→%f.%F{1}→%f)%b"
-  TIME=" [%F{6}%T%f]"
+  TIME="%F{6}%T%f"
   USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{7}%B%n%b%f)"
   MACHINE_NAME="%F{7}%m%f"
   CWD="%3~"
