@@ -10,27 +10,25 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{13}:$GIT%f"
+    GIT="%F{15}[%f%F{13}$GIT%f%F{15}]%f"
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{5}$VENV%f"
+    VENV=" %F{6}$VENV%f"
   fi
-  PSIGN="%B%(!.#.%%)%b"
-  STATSIGN="%B%(?.%F{2}→%f.%F{1}→%f)%b"
-  TIME="%F{6}%T%f"
-  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{7}%B%n%b%f)"
-  MACHINE_NAME="%F{7}%m%f"
+  PSIGN=" %F{15}%B%(!.#.%%)%b%f"
+  STATSIGN="%(?..%F{1}%!%f)"
+  TIME="%T"
+  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{10}%n%f)"
+  MACHINE_NAME="%F{10}%m%f"
   CWD="%3~"
 
-  if [[ $COLUMNS -lt 81 ]]; then
+  if [[ $COLUMNS -lt 71 ]]; then
     CWD="%1~"
-    else
-    STATSIGN="$STATSIGN "
   fi
 
-  CWD="%F{14}$CWD%f"
+  CWD="%F{15}$CWD%f"
   OPT_USER_NAME=$(read_var "prompt/username" "on")
   OPT_MACHINE_NAME=$(read_var "prompt/hostname" "on")
   OPT_TIME=$(read_var "prompt/time" "on")
@@ -38,6 +36,7 @@ function precmd () {
   OPT_CWD=$(read_var "prompt/cwd" "on")
   OPT_GIT=$(read_var "prompt/git" "on")
   OPT_NEWLINE=$(read_var "prompt/newline" "on")
+  OPT_CMDSTAT=$(read_var "prompt/command-status" "on")
   PROMPT=""
   RPROMPT=""
   SEP1=""
@@ -48,10 +47,10 @@ function precmd () {
     PROMPT+="$NEWLINE"
   fi
 
-  PROMPT+="$STATSIGN"
+  RPROMPT+=""
 
   if { [[ $OPT_USER_NAME = on ]] || [[ $OPT_MACHINE_NAME = on ]] } && [[ $OPT_CWD = on ]]; then
-    SEP1=":"
+    SEP1=" "
   fi
 
   if [[ $OPT_USER_NAME = on ]] && [[ $OPT_MACHINE_NAME = on ]]; then
@@ -78,6 +77,10 @@ function precmd () {
     PROMPT+="$GIT"
   fi
 
+  if [[ $OPT_CMDSTAT = on ]]; then
+    RPROMPT+="$STATSIGN "
+  fi
+
   if [[ $OPT_VENV = on ]]; then
     RPROMPT+="$VENV$SEP3"
   fi
@@ -85,6 +88,7 @@ function precmd () {
   if [[ $OPT_TIME = on ]]; then
     RPROMPT+="$TIME"
   fi
+
 
   export PROMPT="$PROMPT$PSIGN "
   export RPROMPT="$RPROMPT"
