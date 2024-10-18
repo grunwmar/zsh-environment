@@ -15,7 +15,7 @@ function precmd () {
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{13}$VENV%f"
+    VENV="%F{5}$VENV%f"
   fi
   PSIGN="%B%(!.#.%%)%b"
   STATSIGN="%B%(?.%F{2}→%f.%F{1}→%f)%b"
