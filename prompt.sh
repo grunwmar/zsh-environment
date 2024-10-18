@@ -19,9 +19,9 @@ function precmd () {
   fi
   PSIGN="%B%(!.#.%%)%b"
   STATSIGN="%B%(?.%F{2}→%f.%F{1}→%f)%b"
-  TIME=" %F{12}%T%f"
-  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%B%F{4}%n%f%b)"
-  MACHINE_NAME="%F{4}%m%f"
+  TIME=" [%F{6}%T%f]"
+  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{7}%B%n%b%f)"
+  MACHINE_NAME="%F{7}%m%f"
   CWD="%3~"
 
   if [[ $COLUMNS -lt 81 ]]; then
@@ -55,7 +55,7 @@ function precmd () {
   fi
 
   if [[ $OPT_USER_NAME = on ]] && [[ $OPT_MACHINE_NAME = on ]]; then
-    SEP2="%F{4}@%f"
+    SEP2="@"
   fi
 
   if [[ $OPT_TIME = on ]] || [[ $OPT_MACHINE_NAME = on ]]; then
