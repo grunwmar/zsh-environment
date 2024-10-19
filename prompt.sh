@@ -90,7 +90,7 @@ function precmd () {
   fi
 
 
-  export PROMPT="$PROMPT$PSIGN "
+  export PROMPT="$PROMPT "
   export RPROMPT="$RPROMPT"
 }
 
