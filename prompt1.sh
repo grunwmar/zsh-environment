@@ -10,26 +10,26 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{5}↑$GIT↓%f "
+    GIT="%S  $GIT %s"
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{6}($VENV)%f "
+    VENV="%S  $VENV %s"
   fi
 
   PROMPT_SIGN=" %F{15}%B%(!.#.%%)%b%f"
-  PREV_CMD_STATUS_VALUE="%(?..%F{1}%!%f)"
-  TIME="%T"
-  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{10}%n%f)"
-  MACHINE_NAME="%F{2}%m%f"
+  PREV_CMD_STATUS_VALUE="%(?.%F{10}%f.%F{9}%S %! %s%f)"
+  TIME="%S %T %s"
+  USER_NAME=" 󰀓 %n"
+  MACHINE_NAME="  %m "
   CURRENT_DIR="%3~"
 
   if [[ $COLUMNS -lt 51 ]]; then
     CURRENT_DIR="%1~"
   fi
 
-  CURRENT_DIR="%F{15}$CURRENT_DIR%f"
+  CURRENT_DIR="$CURRENT_DIR"
 
   OPT_USER_NAME=$(read_var "prompt/username" "on")
   OPT_MACHINE_NAME=$(read_var "prompt/hostname" "on")
@@ -45,16 +45,14 @@ function precmd () {
   SEP1=""
   SEP2=""
 
-  if [[ $OPT_NEWLINE = on ]]; then
-    PROMPT+="$NEWLINE"
-  fi
+
 
   if { [[ $OPT_USER_NAME = on ]] || [[ $OPT_MACHINE_NAME = on ]] } && [[ $OPT_CWD = on ]]; then
     SEP1=" "
   fi
 
   if [[ $OPT_USER_NAME = on ]] && [[ $OPT_MACHINE_NAME = on ]]; then
-    SEP2="%F{2}@%f"
+    SEP2=" "
   fi
 
   if [[ $OPT_USER_NAME = on ]]; then
@@ -66,7 +64,7 @@ function precmd () {
   fi
 
   if [[ $OPT_CWD = on ]]; then
-    PROMPT+="$SEP1$CURRENT_DIR"
+    PROMPT="%S$PROMPT%s $CURRENT_DIR"
   fi
 
   if [[ $OPT_GIT = on ]]; then
@@ -82,10 +80,10 @@ function precmd () {
   fi
 
   if [[ $OPT_CMDSTAT = on ]]; then
-    RPROMPT="$PREV_CMD_STATUS_VALUE $RPROMPT"
+    RPROMPT="$PREV_CMD_STATUS_VALUE$RPROMPT"
   fi
 
-  export PROMPT="$PROMPT "
+  export PROMPT="$NEWLINE$PROMPT  "
   export RPROMPT="$RPROMPT"
 }
 
