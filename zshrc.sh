@@ -90,7 +90,7 @@ function ze:update () {
   fi
 }
 
-OPT_FANCY_PROMPT=$(read_var "prompt/fancy-prompt" "on")
+OPT_FANCY_PROMPT=$(read_var "prompt/fancy-prompt" "off")
 
 if [[ $OPT_FANCY_PROMPT = on ]]; then
   source "$ZSH_RC_DIR/prompt1.sh"
