@@ -1,6 +1,5 @@
 #!/usr/bin/zsh
 
-
 function get_git_branch () {
    git branch --show-current 2>/dev/null
 }
@@ -90,7 +89,7 @@ function precmd () {
 }
 
 function ze:prompt-set() {
-  ZVAR="ZSH_USER_DIR/var/prompt"
+  ZVAR="$ZSH_USER_DIR/var/prompt"
   if ! [[ -d "$ZVAR" ]]; then
       mkdir -p "$ZVAR"
   fi
