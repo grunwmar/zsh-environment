@@ -23,3 +23,11 @@ function venv () {
      fi
   done
 }
+
+# git aliases
+alias gad="git add"
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gca="git commit -m ""#$(date)"
+alias gpu="git push"
+alias gpf="git push -f"

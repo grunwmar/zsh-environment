@@ -106,5 +106,5 @@ if [[ -f "$ZSH_USER_DIR/zshrc.sh" ]]; then
     source "$ZSH_USER_DIR/zshrc.sh"
 fi
 
-echo $(date)  -  $(which zsh)
+echo $USER@$HOSTNAME  -  $(which zsh)  -  $(date)
 echo ""
