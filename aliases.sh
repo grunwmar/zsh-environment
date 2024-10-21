@@ -28,6 +28,6 @@ function venv () {
 alias gad="git add"
 alias gaa="git add ."
 alias gcm="git commit -m"
-alias gca="git commit -m \"#commit: $(date)\""
+alias gca=git commit -m "#commit: $(date)"
 alias gpu="git push"
 alias gpf="git push -f"
