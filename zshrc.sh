@@ -105,3 +105,6 @@ fi
 if [[ -f "$ZSH_USER_DIR/zshrc.sh" ]]; then
     source "$ZSH_USER_DIR/zshrc.sh"
 fi
+
+which zsh
+echo ""
