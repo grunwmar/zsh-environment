@@ -84,7 +84,7 @@ function precmd () {
   export RPROMPT="$RPROMPT"
 }
 
-function ze:prompt-set() {
+function ze-prompt-set() {
   ZVAR="$ZSH_USER_DIR/var/prompt"
   if ! [[ -d "$ZVAR" ]]; then
       mkdir -p "$ZVAR"

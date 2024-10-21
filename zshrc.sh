@@ -79,7 +79,7 @@ if [[ -f "$ZSH_USER_DIR/aliases.sh" ]]; then
 fi
 
 # Update environment from git
-function ze:update () {
+function ze-update () {
   echo -n "Do you want to download zsh-environment from git? [y/N] "
   read ANSW
   if [[ $ANSW = "y" ]]; then
