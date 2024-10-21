@@ -9,7 +9,7 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{5}↑$GIT↓%f "
+    GIT="%F{5}↑↓$GIT%f "
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
