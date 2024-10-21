@@ -4,14 +4,14 @@
 # custom paths for ZSH_RC_DIR and ZSH_USER_DIR
 if [[ $1 = -d ]]; then
     export ZSH_RC_DIR="./"
-    export ZSH_USER_DIR="./zsh_user"
+    export ZSH_USER_DIR="./zshuser"
     echo "[Development mode]"
 elif [[ $1 = -c ]]; then
     export ZSH_RC_DIR="$2"
     export ZSH_USER_DIR="$3"
 else
     export ZSH_RC_DIR="$HOME/.zshrc.d"
-    export ZSH_USER_DIR="$HOME/.zsh_user"
+    export ZSH_USER_DIR="$HOME/.zshuser"
 fi
 
 if [[ -d "$ZSH_RC_DIR/commands" ]]; then

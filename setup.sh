@@ -4,11 +4,11 @@
 git clone https://github.com/grunwmar/zsh-environment.git "$HOME/.zshrc.d"
 
 # create user's custom directory
-if ! [[ -d "$HOME/.zsh_user" ]]; then
-  mkdir "$HOME/.zsh_user"
-  mkdir "$HOME/.zsh_user/plugins"
-  echo "#!/usr/bin/zsh" > "$HOME/.zsh_user/plugins/plugins.sh"
-  echo "#!/usr/bin/zsh" > "$HOME/.zsh_user/aliases.sh"
+if ! [[ -d "$HOME/.zshuser" ]]; then
+  mkdir "$HOME/.zshuser"
+  mkdir "$HOME/.zshuser/plugins"
+  echo "#!/usr/bin/zsh" > "$HOME/.zshuser/plugins/plugins.sh"
+  echo "#!/usr/bin/zsh" > "$HOME/.zshuser/aliases.sh"
 fi
 
 # checks if .zshrc.sh file is present and asks to remove it

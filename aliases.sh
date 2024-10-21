@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-alias ls="ls --color=yes"
+alias ls="ls --color=auto"
 alias l="ls -lh"
 alias ll="ls -lAh"
 alias la="ls -A"
@@ -12,4 +12,14 @@ function cl () {
   fi
 }
 
+function venv () {
+  typeset -a venv_names
+  venv_names=(venv .venv .python)
 
+  for name in $venv_names; do
+     vpath=$PWD/$name/bin/activate
+     if [[ -f $vpath ]]; then
+        source $vpath
+     fi
+  done
+}
