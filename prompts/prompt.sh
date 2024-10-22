@@ -17,7 +17,7 @@ function precmd () {
     VENV="%F{6}▣ $VENV%f "
   fi
 
-  PROMPT_SIGN="%F{15}%B%(!. %B#%b.)%b%f"
+  PROMPT_SIGN="%F{15}%B%(!. #.)%b%f"
   PREV_CMD_STATUS_VALUE="%(?.. %F{1}▼ %!%f)"
   TIME="%T"
   USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
