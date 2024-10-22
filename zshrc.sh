@@ -99,6 +99,11 @@ else
   source "$ZPKG/prompts/prompt.sh"
 fi
 
+function load_plugin () {
+    NAME="$1"
+    source "$ZPLUGINS/$NAME/$NAME.plugin.zsh"
+}
+
 if [[ -f "$ZUSER/plugins/plugins.sh" ]]; then
     source "$ZUSER/plugins/plugins.sh"
 fi
