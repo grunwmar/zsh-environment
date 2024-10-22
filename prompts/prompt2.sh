@@ -18,7 +18,7 @@ function precmd () {
   fi
 
   PROMPT_SIGN="%F{15}%B%(!. %F{11}%B#%f%b.)%b%f"
-  PREV_CMD_STATUS_VALUE="%(?.. %F{8}%f%F{1}%!%f)"
+  PREV_CMD_STATUS_VALUE="%(?.. %F{9}󰀧%f%F{1}%!%f)"
   TIME="%T"
   USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
   MACHINE_NAME="%F{7}%m%f"
