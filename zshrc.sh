@@ -109,7 +109,7 @@ if [[ -f "$ZUSER/plugins/plugins.sh" ]]; then
 fi
 
 clear
-echo -e "[%F{15}$(which zsh)%f $USER@$HOSTNAME]"
+print -P "[%F{15}$(which zsh)%f $USER@$HOSTNAME]"
 echo ""
 
 if [[ -f "$ZUSER/zshrc.sh" ]]; then
