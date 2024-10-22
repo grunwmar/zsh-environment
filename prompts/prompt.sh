@@ -20,8 +20,8 @@ function precmd () {
   PROMPT_SIGN="%F{15}%B%(!.#.%%)%b%f"
   PREV_CMD_STATUS_VALUE="%(?.. %F{1}▼ %!%f)"
   TIME="%T"
-  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{10}%n%f)"
-  MACHINE_NAME="%F{2}%m%f"
+  USER_NAME="%(!.%F{11}%B!%f%F{5}%n%f%b.%F{15}%n%f)"
+  MACHINE_NAME="%F{7}%m%f"
   CURRENT_DIR="%3~"
 
   if [[ $COLUMNS -lt 51 ]]; then
