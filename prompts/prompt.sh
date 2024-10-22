@@ -17,10 +17,10 @@ function precmd () {
     VENV="%F{6}▣ $VENV%f "
   fi
 
-  PROMPT_SIGN="%F{15}%B%(!. %F{11}%Bn%f%b.)%b%f"
+  PROMPT_SIGN="%F{15}%B%(!. %F{11}%B#%f%b.)%b%f"
   PREV_CMD_STATUS_VALUE="%(?.. %F{1}▼ %!%f)"
   TIME="%T"
-  USER_NAME="%(!.%F{11}%Bn%f%b.%F{15}%n%f)"
+  USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
   MACHINE_NAME="%F{7}%m%f"
   CURRENT_DIR="%3~"
 
