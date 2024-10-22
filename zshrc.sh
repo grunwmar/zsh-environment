@@ -108,10 +108,11 @@ if [[ -f "$ZUSER/plugins/plugins.sh" ]]; then
     source "$ZUSER/plugins/plugins.sh"
 fi
 
+clear
+echo "[$(which zsh) $USER@$HOSTNAME]"
+echo ""
+
 if [[ -f "$ZUSER/zshrc.sh" ]]; then
     source "$ZUSER/zshrc.sh"
 fi
 
-clear
-echo $USER@$HOSTNAME  -  $(which zsh)
-echo ""
