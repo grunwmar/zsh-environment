@@ -9,16 +9,16 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{13}%f%F{5}$GIT%f "
+    GIT="%F{13} %f%F{5}$GIT%f "
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{14}%f%F{6}$VENV%f "
+    VENV="%F{14} %f%F{6}$VENV%f "
   fi
 
   PROMPT_SIGN="%F{15}%B%(!. %F{11}%B#%f%b.)%b%f"
-  PREV_CMD_STATUS_VALUE="%(?.. %F{9}󰀧%f%F{1}%!%f)"
+  PREV_CMD_STATUS_VALUE="%(?.. %F{9}󰀧 %f%F{1}%!%f)"
   TIME="%T"
   USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
   MACHINE_NAME="%F{7}%m%f"
