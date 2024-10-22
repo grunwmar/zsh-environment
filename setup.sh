@@ -8,6 +8,10 @@ if ! [[ -d "$HOME/.zuser" ]]; then
   mkdir "$HOME/.zuser"
   mkdir "$HOME/.zuser/plugins"
   echo "#!/usr/bin/zsh" > "$HOME/.zuser/plugins/plugins.sh"
+  echo "# load_plugin plugin-name-one" >> "$HOME/.zuser/plugins/plugins.sh"
+  echo "# load_plugin plugin-name-two" >> "$HOME/.zuser/plugins/plugins.sh"
+  echo "# load_plugin plugin-name-three" >> "$HOME/.zuser/plugins/plugins.sh"
+  echo "# ..." >> "$HOME/.zuser/plugins/plugins.sh"
   echo "#!/usr/bin/zsh" > "$HOME/.zuser/aliases.sh"
 fi
 
