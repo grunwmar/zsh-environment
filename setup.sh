@@ -1,14 +1,14 @@
 #!/usr/bin/zsh
 
 # clone repo
-git clone https://github.com/grunwmar/zsh-environment.git "$HOME/.zshrc.d"
+git clone https://github.com/grunwmar/zsh-environment.git "$HOME/.zpkg"
 
 # create user's custom directory
-if ! [[ -d "$HOME/.zshuser" ]]; then
-  mkdir "$HOME/.zshuser"
-  mkdir "$HOME/.zshuser/plugins"
-  echo "#!/usr/bin/zsh" > "$HOME/.zshuser/plugins/plugins.sh"
-  echo "#!/usr/bin/zsh" > "$HOME/.zshuser/aliases.sh"
+if ! [[ -d "$HOME/.zuser" ]]; then
+  mkdir "$HOME/.zuser"
+  mkdir "$HOME/.zuser/plugins"
+  echo "#!/usr/bin/zsh" > "$HOME/.zuser/plugins/plugins.sh"
+  echo "#!/usr/bin/zsh" > "$HOME/.zuser/aliases.sh"
 fi
 
 # checks if .zshrc.sh file is present and asks to remove it
@@ -21,4 +21,4 @@ if [[ -f "$HOME/.zshrc" ]]; then
 fi
 
 # creates symbolic links to .zshrc
-ln -s "$HOME/.zshrc.d/zshrc.sh" "$HOME/.zshrc"
+ln -s "$HOME/.zpkg/zshrc.sh" "$HOME/.zshrc"

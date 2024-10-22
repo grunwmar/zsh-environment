@@ -1,42 +1,43 @@
 #!/usr/bin/zsh
 
 # Checks if is running in development mode (-d) or enter
-# custom paths for ZSH_RC_DIR and ZSH_USER_DIR
+# custom paths for ZPKG and ZUSER
 if [[ $1 = -d ]]; then
-    export ZSH_RC_DIR="./"
-    export ZSH_USER_DIR="./zshuser"
+    export ZPKG="./"
+    export ZUSER="./zuser"
     echo "[Development mode]"
 elif [[ $1 = -c ]]; then
-    export ZSH_RC_DIR="$2"
-    export ZSH_USER_DIR="$3"
+    export ZPKG="$2"
+    export ZUSER="$3"
 else
-    export ZSH_RC_DIR="$HOME/.zshrc.d"
-    export ZSH_USER_DIR="$HOME/.zshuser"
+    export ZPKG="$HOME/.zpkg"
+    export ZUSER="$HOME/.zuser"
 fi
 
-if [[ -d "$ZSH_RC_DIR/commands" ]]; then
-    path+=("$ZSH_RC_DIR/commands")
+if [[ -d "$ZPKG/commands" ]]; then
+    path+=("$ZPKG/commands")
     export PATH
 fi
 
 # Directory for custom zshrc and plugins
-if ! [[ -d "$ZSH_USER_DIR" ]]; then
-    mkdir "$ZSH_USER_DIR"
+if ! [[ -d "$ZUSER" ]]; then
+    mkdir "$ZUSER"
 fi
 
-if ! [[ -d "$ZSH_USER_DIR/plugins" ]]; then
-    mkdir "$ZSH_USER_DIR/plugins"
+if ! [[ -d "$ZUSER/plugins" ]]; then
+    mkdir "$ZUSER/plugins"
 fi
 
+ZPLUGINS="$ZUSER/plugins"
 
 # Sources user's custom commands
-if [[ -d "$ZSH_USER_DIR/commands" ]]; then
-    path+=("$ZSH_USER_DIR/commands")
+if [[ -d "$ZUSER/commands" ]]; then
+    path+=("$ZUSER/commands")
     export PATH
 fi
 
 function read_var() {
-    ZVAR="$ZSH_USER_DIR/var"
+    ZVAR="$ZUSER/var"
     if [[ -f "$ZVAR/$1" ]]; then
       cat "$ZVAR/$1"
     else
@@ -45,12 +46,12 @@ function read_var() {
 }
 
 function set_var() {
-    ZVAR="$ZSH_USER_DIR/var"
+    ZVAR="$ZUSER/var"
     echo "$2" > "$ZVAR/$1"
 }
 
 # =========================== Hístory settings ===========================
-export HISTFILE="$ZSH_USER_DIR/history.log"
+export HISTFILE="$ZUSER/history.log"
 export HISTSIZE=5000000
 export SAVEHIST=$HISTSIZE
 export HISTDUP=erase
@@ -72,10 +73,10 @@ zstyle ':completion:*' range 1000:100
 
 # ========================================================================
 
-source "$ZSH_RC_DIR/aliases.sh"
+source "$ZPKG/aliases.sh"
 
-if [[ -f "$ZSH_USER_DIR/aliases.sh" ]]; then
-    source "$ZSH_USER_DIR/aliases.sh"
+if [[ -f "$ZUSER/aliases.sh" ]]; then
+    source "$ZUSER/aliases.sh"
 fi
 
 # Update environment from git
@@ -84,7 +85,7 @@ function ze-update () {
   read ANSW
   if [[ $ANSW = "y" ]]; then
     PWDBK="$PWD"
-    cd $ZSH_RC_DIR
+    cd $ZPKG
     git pull -f
     cd "$PWDBK"
   fi
@@ -93,19 +94,19 @@ function ze-update () {
 OPT_FANCY_PROMPT=$(read_var "prompt/fancy-prompt" "off")
 
 if [[ $OPT_FANCY_PROMPT = on ]]; then
-  source "$ZSH_RC_DIR/prompt1.sh"
+  source "$ZPKG/prompts/prompt1.sh"
 else
-  source "$ZSH_RC_DIR/prompt.sh"
+  source "$ZPKG/prompts/prompt.sh"
 fi
 
-if [[ -f "$ZSH_USER_DIR/plugins/plugins.sh" ]]; then
-    source "$ZSH_USER_DIR/plugins/plugins.sh"
+if [[ -f "$ZUSER/plugins/plugins.sh" ]]; then
+    source "$ZUSER/plugins/plugins.sh"
 fi
 
-if [[ -f "$ZSH_USER_DIR/zshrc.sh" ]]; then
-    source "$ZSH_USER_DIR/zshrc.sh"
+if [[ -f "$ZUSER/zshrc.sh" ]]; then
+    source "$ZUSER/zshrc.sh"
 fi
 
 clear
-echo $USER@$HOSTNAME  -  $(which zsh)  -  $(date)
+echo $USER@$HOSTNAME  -  $(which zsh)
 echo ""
