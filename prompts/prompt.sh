@@ -9,18 +9,19 @@ function precmd () {
 
   GIT=$(get_git_branch)
   if ! [[ -z $GIT ]]; then
-    GIT="%F{5}⌥ $GIT%f "
+    GIT="%F{13}⌥ %f%F{5}$GIT%f "
   fi
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{6}▣ $VENV%f "
+    VENV="%F{14}▣ %f%F{6}$VENV%f "
   fi
 
-  PROMPT_SIGN="%F{15}%B%(!. #. %%)%b%f"
-  PREV_CMD_STATUS_VALUE="%(?.. %F{1}▼ %!%f)"
+  PROMPT_SIGN="%B%(!.#.%%)%b"
+  PREV_CMD_STATUS_VALUE="%(?.. %F{9}▼ %f%F{1}%!%f)"
   TIME="%T"
-  USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
+  USER_NAME="%(!.%F{9}%n%f.%F{15}%n%f)"
+  PRIVILEGE="%(!.%F{9}%B*%f%b.)"
   MACHINE_NAME="%F{7}%m%f"
   CURRENT_DIR="%3~"
 
@@ -44,10 +45,6 @@ function precmd () {
   RPROMPT=""
   SEP1=""
   SEP2=""
-
-  if [[ $OPT_NEWLINE = on ]]; then
-    PROMPT+="$NEWLINE"
-  fi
 
   if { [[ $OPT_USER_NAME = on ]] || [[ $OPT_MACHINE_NAME = on ]] } && [[ $OPT_CWD = on ]]; then
     SEP1=" "
@@ -85,12 +82,17 @@ function precmd () {
     RPROMPT="$PREV_CMD_STATUS_VALUE $RPROMPT"
   fi
 
+  PROMPT="$PRIVILEGE$PROMPT"
+
+  if [[ $OPT_NEWLINE = on ]]; then
+    PROMPT="$NEWLINE$PROMPT"
+  fi
+
   if [[ $OPT_PROMPT_SIGN = on ]]; then
     PROMPT+="$PROMPT_SIGN"
   fi
 
-  export PROMPT="$PROMPT$ "
+  export PROMPT="$PROMPT "
   export RPROMPT="$RPROMPT"
 }
-
 
