@@ -14,11 +14,11 @@ function precmd () {
 
   VENV=$(basename "$VIRTUAL_ENV")
   if ! [[ -z $VENV ]]; then
-    VENV="%F{14}▣ %f%F{6}$VENV%f "
+    VENV="%F{14}◆ %f%F{6}$VENV%f "
   fi
 
   PROMPT_SIGN="%B%(!.#.%%)%b"
-  PREV_CMD_STATUS_VALUE="%(?.. %F{9}▼ %f%F{1}%!%f)"
+  PREV_CMD_STATUS_VALUE="%(?.. %F{9}▽ %f%F{1}%!%f)"
   TIME="%T"
   USER_NAME="%(!.%F{9}%n%f.%F{15}%n%f)"
   PRIVILEGE="%(!.%F{9}%B*%f%b.)"
