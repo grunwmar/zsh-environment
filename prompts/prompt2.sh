@@ -82,14 +82,14 @@ function precmd () {
     RPROMPT="$PREV_CMD_STATUS_VALUE $RPROMPT"
   fi
 
-  if [[ $OPT_PROMPT_SIGN = on ]]; then
-    PROMPT+="$PROMPT_SIGN"
-  fi
-
   PROMPT="$PRIVILEGE$PROMPT"
 
   if [[ $OPT_NEWLINE = on ]]; then
     PROMPT="$NEWLINE$PROMPT"
+  fi
+
+  if [[ $OPT_PROMPT_SIGN = on ]]; then
+    PROMPT+="$PROMPT_SIGN"
   fi
 
   export PROMPT="$PROMPT "
