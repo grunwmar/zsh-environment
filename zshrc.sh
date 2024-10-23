@@ -91,6 +91,14 @@ function ze-update () {
   fi
 }
 
+function ze-prompt-set() {
+  ZVAR="$ZUSER/var/prompt"
+  if ! [[ -d "$ZVAR" ]]; then
+      mkdir -p "$ZVAR"
+  fi
+  set_var "prompt/$1" "$2"
+}
+
 OPT_FANCY_PROMPT=$(read_var "prompt/fancy-prompt" "off")
 
 if [[ $OPT_FANCY_PROMPT = on ]]; then

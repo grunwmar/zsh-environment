@@ -17,7 +17,7 @@ function precmd () {
     VENV="%F{6}▣ $VENV%f "
   fi
 
-  PROMPT_SIGN="%F{15}%B%(!. #.)%b%f"
+  PROMPT_SIGN="%F{15}%B%(!. #. %%)%b%f"
   PREV_CMD_STATUS_VALUE="%(?.. %F{1}▼ %!%f)"
   TIME="%T"
   USER_NAME="%(!.%F{11}%B%n%f%b.%F{15}%n%f)"
@@ -38,6 +38,7 @@ function precmd () {
   OPT_GIT=$(read_var "prompt/git" "on")
   OPT_NEWLINE=$(read_var "prompt/newline" "on")
   OPT_CMDSTAT=$(read_var "prompt/command-status" "on")
+  OPT_PROMPT_SIGN=$(read_var "prompt/prompt-sign" "on")
 
   PROMPT=""
   RPROMPT=""
@@ -84,14 +85,12 @@ function precmd () {
     RPROMPT="$PREV_CMD_STATUS_VALUE $RPROMPT"
   fi
 
-  export PROMPT="$PROMPT$PROMPT_SIGN "
+  if [[ $OPT_PROMPT_SIGN = on ]]; then
+    PROMPT+="$PROMPT_SIGN"
+  fi
+
+  export PROMPT="$PROMPT$ "
   export RPROMPT="$RPROMPT"
 }
 
-function ze-prompt-set() {
-  ZVAR="$ZUSER/var/prompt"
-  if ! [[ -d "$ZVAR" ]]; then
-      mkdir -p "$ZVAR"
-  fi
-  set_var "prompt/$1" "$2"
-}
+
